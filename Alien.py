@@ -11,4 +11,8 @@ class Alien(pygame.sprite.Sprite):
         self.SCREENRECT = screen_rectangle
         self.image = self.images[0]
         self.rect = self.image.get_rect()
-        
+        self.direction_factor = random.choice((-1, 1))
+        self.x_velocity = self. direction_factor * self.speed
+        self.frame = 0
+        if self.x_velocity < 0:
+            
