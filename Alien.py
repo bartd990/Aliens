@@ -20,4 +20,7 @@ class Alien(pygame.sprite.Sprite):
     def update(self):
         self.rect.move_ip(self.x_velocity, 0)
         if not self.SCREENRECT.contains(self.rect):
-            
+            self.x_velocity = -self.x_velocity
+            self.rect.top = self.rect.bottom + 1
+            self.rect = self.rect.clamp(self.SCREENRECT)
+            # On line 53 for tim
