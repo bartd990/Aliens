@@ -15,4 +15,9 @@ class Alien(pygame.sprite.Sprite):
         self.x_velocity = self. direction_factor * self.speed
         self.frame = 0
         if self.x_velocity < 0:
+            self.rect.right = self.SCREENRECT.right
+
+    def update(self):
+        self.rect.move_ip(self.x_velocity, 0)
+        if not self.SCREENRECT.contains(self.rect):
             
