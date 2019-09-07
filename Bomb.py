@@ -10,6 +10,6 @@ class Bomb(pygame.sprite.Sprite):
         self.rect = self.image.get_rect(midbottom=alien.rect.move(0, 5).midbottom)
     def update(self):
         self.rect.move_ip(0, self.speed)
-        self.image = self.images[self.life//self.animation_cycle % 2]
-        if (self.life <=0):
+        if (self.rect.bottom >=700):
+            Explosion(self)
             self.kill()
