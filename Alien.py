@@ -23,4 +23,6 @@ class Alien(pygame.sprite.Sprite):
             self.x_velocity = -self.x_velocity
             self.rect.top = self.rect.bottom + 1
             self.rect = self.rect.clamp(self.SCREENRECT)
-            # On line 53 for tim
+        self.frame = self.frame + 1
+        self.image = self.images[self.frame//self.animation_cycle % 3]
+        
