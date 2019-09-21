@@ -1,6 +1,6 @@
 import pygame
 class Shot(pygame.sprite.Sprite):
-    speed = -11
+    y_velocity = -11
     images = []
 
     def _init_(self, tank):
@@ -8,6 +8,6 @@ class Shot(pygame.sprite.Sprite):
         self.image = self.images[0]
         self.rect = self.image.get_rect(midbottom=tank)
     def update(self):
-        self.rect.move_ip(0, self.speed)
-        if self.rect.top <=0:
+        self.rect.move_ip(0, self.y_velocity)
+        if self.rect.top <= 0:
             self.kill()
