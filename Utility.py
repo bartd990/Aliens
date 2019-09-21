@@ -17,5 +17,15 @@ def load_images(*file_names):
 class DummySound:
     def play(self):
         pass
-def load_sound(file):
+def load_sound(file_name):
+    if (pygame.mixer is None):
+        print("Utility - load_sound(), system found pygame mixer disabled.")
+        return DummySound()
+    file_name = os.path.join(main_directory, "Data", file_name)
+    try:
+        sound = pygame.mixer.Sound(file_name)
+        return sound
+    except pygame.error:
+        print("Warning, unable to load, %s" % file_name)
+    return DummySound()
     
