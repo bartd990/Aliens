@@ -11,6 +11,11 @@ def load_image(file):
 def load_images(*file_names):
     images = []
     for file_name in file_names:
-        image = load_image(file)
+        image = load_image(file_name)
         images.append(image)
-        
+    return images
+class DummySound:
+    def play(self):
+        pass
+def load_sound(file):
+    
