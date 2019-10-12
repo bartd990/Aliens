@@ -19,3 +19,5 @@ BOMB_ODDS = 60
 ALIEN_RELOAD = 12
 SCREENRECT = Rect(0, 0, 1024, 768)
 main_directory = os.path.split(os.path.abspath(__file__))[0]
+def main(winstyle=0):
+    pass
