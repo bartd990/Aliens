@@ -9,3 +9,8 @@ class PlayerLives(pygame.sprite.Sprite):
         self.color = Color("red")
         self.last_lives = -1
         self.update()
+        self.rect = self.image.get_rect().move(850, 5)
+    def update(self):
+        if self.lives != self.last_lives:
+            self.last_lives = self.lives
+            
