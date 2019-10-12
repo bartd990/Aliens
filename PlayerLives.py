@@ -13,4 +13,5 @@ class PlayerLives(pygame.sprite.Sprite):
     def update(self):
         if self.lives != self.last_lives:
             self.last_lives = self.lives
-            
+            label = "Lives: %d" % self.lives
+            self.image = self.font.render(label, 0, self color)
