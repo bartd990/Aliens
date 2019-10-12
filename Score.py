@@ -15,4 +15,4 @@ class Score(pygame.sprite.Sprite):
             self.last_score = self.score_points
             msg = "Score: %d" % self.score_points
             self.image = self.font.render(msg, 0, self.color)
-            # line 29 for mr tim
+            
