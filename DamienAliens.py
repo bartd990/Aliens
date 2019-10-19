@@ -21,3 +21,5 @@ SCREENRECT = Rect(0, 0, 1024, 768)
 main_directory = os.path.split(os.path.abspath(__file__))[0]
 def main(winstyle=0):
     pass
+if (__name__ == "__main__"):
+    main()
