@@ -1,8 +1,14 @@
+# !/usr/bin/env python
+import random
+import os.path
+import pygame
+from 
+
     """
-        Simple DirectMedia Layer (SDL) is a cross-platform development \
-        library designed to provide low level access to audio, keyboard, \
-        mouse, joystick, and graphics hardware via OpenGL and Direct3D. It \
-        is used by video playback software, emulators, and popular games
+Simple DirectMedia Layer (SDL) is a cross-platform development \
+library designed to provide low level access to audio, keyboard, \
+mouse, joystick, and graphics hardware via OpenGL and Direct3D. It \
+is used by video playback software, emulators, and popular games
     """
 
     # Initialize pygame
@@ -43,7 +49,15 @@
     pygame.display.flip()
 
     # game sound enabled
-    set_game_sound()
+def set_game_sound():
+    if pygame.mixer and not pygame.mixer.get_init():
+        print("Warning, no sound")
+        pygame.mixer = None
+    if pygame.mixer:
+        music = os.path.join(main_directory, "data", "house_lo.wav")
+        pygame.mixer.music.load(music)
+        pygame.mixer.music.set_volume(.2)
+        pygame.mixer.music.play(-1)
 
     # TODO: Initialize game states
     # states = [PlayGameState(),OptionsState(),GameOverState()]
@@ -96,6 +110,7 @@ def check_game_level(score):
 
 
 def set_game_obj_images():
+
     # Load images, assign to sprite classes
     # (do this before the classes are used, after screen setup)
     player_image = Utility.load_image("player1.gif")
@@ -118,4 +133,19 @@ def set_game_obj_images():
     icon = pygame.transform.scale(Alien.images[0],(32, 32))
     pygame.display.set_icon(icon)
     pygame.display.set_caption("Damien\'Damien Aliens")
-    
+    for x_position in range(0, SCREENRECT.width, backround_tile_image.get_width()):
+        backround.blit(background, (0))
+
+        set_game_sound()
+
+def game_loop(all_game_rects, screen, backround, shots, last_alien, aliens, spounge_aliens, bombs, winstyle, bestdepth, FULLSCREEN):
+    clock = pygame.time.Clock()
+    player = Player(SCREENRECT)
+    alienreload = ALIEN_RELOAD
+    boom_sound = Utility.load_sound("boom.wav")
+    shoot_sound = Utility.load_sound("car_door.wav")
+    while (player.alive() is True):
+        from event in pygame.event.get():
+        if event.type == quit or \
+            (event.type == KEYDOWN and event.key == K_ESCAPE):
+            
